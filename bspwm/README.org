@@ -1,0 +1,76 @@
+#+TITLE: Readme
+#+AUTHOR: x86Alex
+#+DESCRIPTION: About my bspwm config
+
+* Table of Contents :toc:
+- [[#autostart][Autostart]]
+  - [[#sxhkd][sxhkd]]
+  - [[#nitrogen][nitrogen]]
+  - [[#polybar][Polybar]]
+  - [[#picom][Picom]]
+  - [[#pgrep][Pgrep]]
+- [[#workspaces][Workspaces]]
+- [[#border-settings][Border settings]]
+- [[#layouts][Layouts]]
+- [[#window-rules][Window rules]]
+
+* Autostart
+This programs will start on wm startup.
+** sxhkd
+Bspwm does not handle key bindings on its own, so it use Simple X Hotkey Daemon - sxhkd
+
+** nitrogen
+Nitrogen is a wallpaper setter.
+
+** Polybar
+As its name suggests, polybar is a bar.
+
+** Picom
+Picom (or as it was previosly known, compton) is a compositor for wms.
+With it, you can have bg transparency, blur and animations.
+I am using Jonaburg's fork of it: https://github.com/jonaburg/picom
+
+** Pgrep
+Pgrep is a tool that allows you to find the process IDs of a running program.
+
+*** Autstart code
+#+begin_src shell
+#! /bin/sh
+sxhkd &
+nitrogen --restore &
+polybar meinbar &
+picom &
+pgrep -x sxhkd > /dev/null || sxhkd &
+#+END_SRC
+
+* Workspaces
+#+begin_src shell
+bspc monitor -d I II III IV V VI VII VIII IX X
+#+end_src
+
+* Border settings
+#+begin_src shell
+bspc config border_width         2
+bspc config window_gap          12
+bspc config focused_border_color    '#61afef'
+bspc config active__border_color  '#282c34'
+bspc config normal_border_color '#282c34'
+#+end_src
+
+* Layouts
+#+begin_src shell
+### LAYOUTS ###
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+### END ###
+#+end_src
+
+* Window rules
+#+begin_src shell
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+#+end_src
