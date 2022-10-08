@@ -1,0 +1,1 @@
+notify-send -t 2500 "CPU usage" "$(mpstat | awk 'FNR == 4 {print $4"%"}')"
