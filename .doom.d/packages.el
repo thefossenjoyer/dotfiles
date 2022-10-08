@@ -67,3 +67,5 @@
 (package! beacon)
 (package! org-bullets)
 (package! elcord)
+(package! powerline)
+(package! simple-modeline)

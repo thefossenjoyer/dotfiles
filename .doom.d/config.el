@@ -18,11 +18,31 @@
 
 ;; Fonts ;;
 
-;; (setq doom-font (font-spec :family "iosevka" :size 15)
-;;       doom-variable-pitch-font (font-spec :family "iosevka" :size 14))
-(setq doom-font (font-spec :family "Monoid" :size 15)
-       doom-variable-pitch-font (font-spec :family "Monoid" :size 14))
+;; (setq doom-font (font-spec :family "Iosevka" :size 15)
+;;       doom-variable-pitch-font (font-spec :family "Iosevka" :size 16))
 
+;; (setq doom-font (font-spec :family "Anka/Coder" :size 15)
+;;       doom-variable-pitch-font (font-spec :family "Iosevka" :size 16))
+
+;; (setq doom-font (font-spec :family "CozetteVector Nerd Font" :size 15))
+;; (setq doom-font (font-spec :family "ProggyCleanTTSZBP" :size 15))
+
+;; (setq doom-font (font-spec :family "spleen32x64" :size 20)
+;;       doom-variable-pitch-font (font-spec :family "Monoid" :size 14))
+
+(setq doom-font (font-spec :family "JetBrains Mono" :size 15)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14))
+
+(after! doom-themes
+  (setq doom-themes-enable-bold t)
+  (setq doom-themes-enable-italic t))
+
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic))
+
+;; (setq doom-font (font-spec :family "Monoid" :size 15)
+;;        doom-variable-pitch-font (font-spec :family "Monoid" :size 14))
 ;; END OF FONTS ;;
 
 
@@ -50,7 +70,18 @@
 ;;(setq doom-theme 'doom-palenight)
 ;;(setq doom-theme 'palenight)
 
+(setq doom-lighttable-brighter-comments t)
+(setq doom-lighttable-brighter-modeline t)
+
+;; (setq doom-theme 'doom-homage-black)
+;; (setq doom-theme 'doom-tomorrow-night)
+
 (add-to-list 'custom-theme-load-path "/home/anon/.emacs.d/themes")
+(add-to-list 'load-path (concat user-emacs-directory "lisp/" ))
+(add-to-list 'load-path "/home/anon/.emacs.d/.local/elpa")
+(load "modus-themes-exporter")
+(load "humanoid-dark-theme")
+
 
 ;; dashboard
 (require 'dashboard)
@@ -109,8 +140,45 @@
 (setq elcord-use-major-mode-as-main-icon t)
 ;; END OF ELCORD ::
 
+(setq use-dialog-box nil)
 
-;(spaceline-spacemacs-theme)
+;; (require 'spaceline-config)
+;; (setq spaceline-separator-dir-left '(left . left))
+;; (setq spaceline-separator-dir-right '(right . right))
+;; (spaceline-spacemacs-theme)
+
+;; (add-to-list 'load-path "~/.emacs.d/emacs-powerline")
+;; (require 'powerline)
+
+;; (require 'simple-modeline)
+;; (simple-modeline-mode)
+
+;; (sml/setup)
+
+;; Modeline ;;
+(setq doom-modeline-major-mode-color-icon t)
+(setq doom-modeline-buffer-modification-icon t)
+(setq doom-modeline-height 1)
+(setq doom-modeline-icon t)
+(setq doom-modeline-major-mode-icon t)
+(setq doom-modeline-buffer-state-icon t)
+(setq doom-modeline-buffer-modification-icon t)
+(setq doom-modeline-time-icon t)
+(setq doom-modeline-buffer-name t)
+(setq doom-modeline-lsp t)
+;; (setq doom-modeline-env-version t)
+(setq doom-modeline-buffer-file-name-style 'truncate-all)
+;; END OF MODELINE ::
+
+;; (setq mode-line-format nil)
+
+
+(eval-after-load
+ 'company
+ '(add-to-list 'company-backends 'company-omnisharp))
+
+(add-hook 'csharp-mode-hook #'company-mode)
+
 
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
@@ -129,7 +197,8 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
+(savehist-mode -1)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!

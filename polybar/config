@@ -84,7 +84,7 @@ modules-left = bspwm
 modules-center = date
 modules-right = pulseaudio
 
-;tray-position = right
+; tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
@@ -150,27 +150,38 @@ label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %icon%
+label-empty = ""
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
-pin-workspaces = true
+pin-workspaces = false
 ; Separator in between workspaces
-;label-separator =
+; label-separator = ">>"
 
+ws-icon-0 = I;1
+ws-icon-1 = II;2
+ws-icon-2 = III;3
+ws-icon-3 = IV;4
+ws-icon-4 = V;5
+ws-icon-5 = VI;6
+ws-icon-6 = VII;7
+ws-icon-7 = VIII;8
+ws-icon-8 = IX;9
+ws-icon-9 = X;0
+; ws-icon-0 = I;一
+; ws-icon-1 = II;二
+; ws-icon-2 = III;三
+; ws-icon-3 = IV;四
+; ws-icon-4 = V;五
+; ws-icon-5 = VI;六
+; ws-icon-6 = VII;七
+; ws-icon-7 = VIII;八
+; ws-icon-8 = IX;九
+; ws-icon-9 = X;十
 
-ws-icon-0 = I;一
-ws-icon-1 = II;二
-ws-icon-2 = III;三
-ws-icon-3 = IV;四
-ws-icon-4 = V;五
-ws-icon-5 = VI;六
-ws-icon-6 = VII;七
-ws-icon-7 = VIII;八
-ws-icon-8 = IX;九
-ws-icon-9 = X;十
 ;icon-10 = 十一
 ;ws-icon-default = ♟
+
 
 [module/i3]
 type = internal/i3
@@ -321,7 +332,8 @@ format-prefix-foreground = #61afef
 label = %time%
 ;label-foreground = ${colors.background-alt}
 ;label-foreground = #ff6c6b
-label-foreground = #c678dd
+;label-foreground = #c678dd
+label-foreground = #b6a0ff
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -329,7 +341,8 @@ type = internal/pulseaudio
 format-volume = <label-volume>
 label-volume = vol %percentage%%
 ;label-volume-foreground = ${colors.background-alt}
-label-volume-foreground = #ecbe7b
+; label-volume-foreground = #ecbe7b
+label-volume-foreground = #6ae4b9
 ;label-volume-background = ${colors.background-alt}
 
 label-muted =  muted

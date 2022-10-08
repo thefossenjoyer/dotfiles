@@ -20,7 +20,7 @@
  '(linum-format " %3i ")
  '(objed-cursor-color "#e95678")
  '(package-selected-packages
-   '(ujelly-theme nano-theme twilight-anti-bright-theme faff-theme humanoid-themes kaolin-themes twilight-theme tao-theme sly-quicklisp slime material-theme page-break-lines inkpot-theme exotica-theme ample-theme exwm spaceline-all-the-icons spaceline modus-operandi-theme modus-themes cmake-mode spacemacs-theme spacegray-theme phoenix-dark-pink-theme phoenix-dark-mono-theme monokai-pro-theme dashboard))
+   '(darktooth-theme night-owl-theme minimal-theme almost-mono-themes sublime-themes cherry-blossom-theme melancholy-theme poet-theme cyberpunk-theme ewal-spacemacs-themes nimbus-theme omnisharp mood-one-theme treemacs-all-the-icons mode-icons org-present ujelly-theme nano-theme twilight-anti-bright-theme faff-theme humanoid-themes kaolin-themes twilight-theme tao-theme sly-quicklisp slime material-theme page-break-lines inkpot-theme exotica-theme ample-theme exwm spaceline-all-the-icons spaceline modus-operandi-theme modus-themes cmake-mode spacemacs-theme spacegray-theme phoenix-dark-pink-theme phoenix-dark-mono-theme monokai-pro-theme dashboard))
  '(pdf-view-midnight-colors (cons "#c7c9cb" "#232530"))
  '(rustic-ansi-faces
    ["#232530" "#e95678" "#09f7a0" "#fab795" "#21bfc2" "#6c6f93" "#59e3e3" "#c7c9cb"])
@@ -45,11 +45,13 @@
     (cons 320 "#89656d")
     (cons 340 "#f9cec3")
     (cons 360 "#f9cec3")))
- '(vc-annotate-very-old-color nil))
+ '(vc-annotate-very-old-color nil)
+ '(warning-suppress-types '((doom-first-input-hook) (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(font-lock-comment-face ((t (:slant italic))))
+ '(font-lock-keyword-face ((t (:slant italic)))))
 (put 'customize-group 'disabled nil)
