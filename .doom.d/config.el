@@ -62,6 +62,22 @@
 (setq modus-themes-syntax '(faint))
 
 (load-theme 'modus-vivendi t)
+
+;; (setq evil-emacs-state-cursor '("#b6a0ff" box))
+;; (setq evil-normal-state-cursor '("#b6a0ff" box))
+;; (setq evil-visual-state-cursor '("#b6a0ff" box))
+;; (setq evil-insert-state-cursor '("#b6a0ff" bar))
+;; (setq evil-replace-state-cursor '("#b6a0ff" bar))
+;; (setq evil-operator-state-cursor '("#b6a0ff" hollow))
+
+;; bright pink
+(setq evil-emacs-state-cursor '("#e0b2d6" box))
+(setq evil-normal-state-cursor '("#ff62d4" box))
+(setq evil-visual-state-cursor '("#ff62d4" box))
+(setq evil-insert-state-cursor '("#ff62d4" bar))
+(setq evil-replace-state-cursor '("#ff62d4" bar))
+(setq evil-operator-state-cursor '("#ff62d4" hollow))
+
 ;; END OF MODUS ;;
 
 ;; theme
@@ -80,8 +96,6 @@
 (add-to-list 'load-path (concat user-emacs-directory "lisp/" ))
 (add-to-list 'load-path "/home/anon/.emacs.d/.local/elpa")
 (load "modus-themes-exporter")
-(load "humanoid-dark-theme")
-
 
 ;; dashboard
 (require 'dashboard)
