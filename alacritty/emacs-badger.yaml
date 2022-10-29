@@ -1,0 +1,24 @@
+# Alacritty port of the Emacs Badger theme
+
+Badger: &Badger
+  primary:
+    background: '#171717'
+    foreground: '#f6f3e8'
+  normal:
+    black:   '#000000'
+    red:     '#e2434c'
+    green:   '#86b187'
+    yellow:  '#e0d063'
+    blue:    '#8ac6f2'
+    magenta: '#e18cbb'
+    cyan:    '#46d9ff'
+    white:   '#f6f3e8'
+  # bright:
+  #   black:   '#595959'
+  #   red:     '#ef8b50'
+  #   green:   '#70b900'
+  #   yellow:  '#c0c530'
+  #   blue:    '#79a8ff'
+  #   magenta: '#b6a0ff'
+  #   cyan:    '#6ae4b9'
+  #   white:   '#ffffff'

@@ -4,7 +4,8 @@
 # environment variables. Some entries may override variables
 # set by alacritty itself.
 import:
-  - horizon.yml
+  # - horizon.yml
+  - emacs-badger.yml
 env:
   # TERM variable
   #
@@ -122,12 +123,12 @@ font:
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
-    family: JetBrains Mono
+    # family: JetBrains Mono
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
-    #family: CascadiaCode
+    # family: mononoki Nerd Font
+    family: CascadiaCode
     # family: Iosevka
     # family: spleen32x64
     # family: Dina
@@ -153,8 +154,8 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
-    #family: CascadiaCode
+    family: mononoki Nerd Font
+    family: CascadiaCode
     # family: Iosevka
     # family: spleen32x64
     # family: Dina
@@ -179,8 +180,8 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
-    #family: CascadiaCode
+    family: mononoki Nerd Font
+    family: CascadiaCode
     # family: Iosevka
     # family: spleen32x64
     # family: Dina
@@ -205,9 +206,9 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
-    #family: CascadiaCode
-    # family: Iosevka
+    # family: mononoki Nerd Font
+    family: CascadiaCode
+    family: Iosevka
     # family: spleen32x64
     # family: Dina
     # family: Monoid
@@ -760,6 +761,7 @@ schemes:
 # *ChallangerDeep
 
 colors: *ModusVivendi
+# colors: *Badger
 # colors: *TomorrowNight
 # colors: *ChallangerDeep
 

@@ -14,8 +14,8 @@ alt + c
 alt + g; w
   current_ws
 
-alt + w
-  weather
+# alt + w
+#   weather
 ## END OF POLYBAR SCRIPTS ##
 
 super + b
@@ -30,9 +30,10 @@ Print
 super + Tab
 	  rofi -show window
 
+	# alacritty -e zsh # runs alacritty with zsh
 # terminal emulator
 super + Return
-	alacritty -e zsh # runs alacritty with zsh
+  alacritty
 
 super + p
   killall polybar && polybar meinbar
@@ -40,8 +41,11 @@ super + p
 # rofi -show drun
 #dmenu_run -nb '#282c34' -sf '#dfdfdf' -sb '#3e4451' -nf '#89AAEB' -fn 'spleen32x64'
 # program launcher
+#dmenu_run -nb '#000000' -sf '#dfdfdf' -sb '#3e4451' -nf '#b6a0ff' -fn 'spleen32x64'
+
 super + d
-  dmenu_run -nb '#000000' -sf '#dfdfdf' -sb '#3e4451' -nf '#b6a0ff' -fn 'spleen32x64'
+      dmenu_run -nb '#000000' -sf '#dfdfdf' -sb '#3e4451' -nf '#ffffff' -fn 'mononoki Nerd Font'
+
 
 # make sxhkd reload its configuration files:
 super + Escape
