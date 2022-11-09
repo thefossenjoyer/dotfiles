@@ -19,7 +19,7 @@ alt + g; w
 ## END OF POLYBAR SCRIPTS ##
 
 super + b
-  firefox
+  firefox --no-remote -p thefossenjoyer
 
 super + e
   emacs
@@ -33,7 +33,7 @@ super + Tab
 	# alacritty -e zsh # runs alacritty with zsh
 # terminal emulator
 super + Return
-  alacritty
+  alacritty -e fish
 
 super + p
   killall polybar && polybar meinbar
@@ -44,7 +44,7 @@ super + p
 #dmenu_run -nb '#000000' -sf '#dfdfdf' -sb '#3e4451' -nf '#b6a0ff' -fn 'spleen32x64'
 
 super + d
-      dmenu_run -nb '#000000' -sf '#dfdfdf' -sb '#3e4451' -nf '#ffffff' -fn 'mononoki Nerd Font'
+      dmenu_run -nb '#282828' -sf '#dfdfdf' -sb '#3e4451' -nf '#ffffff' -fn "mononoki"
 
 
 # make sxhkd reload its configuration files:
