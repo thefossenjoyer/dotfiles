@@ -85,6 +85,12 @@
     git-crypt
     gnupg
 
+    # notifs
+    notify-desktop
+    dunst
+
+    killall
+
     
   ];
 
