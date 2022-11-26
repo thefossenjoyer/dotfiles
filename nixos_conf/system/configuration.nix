@@ -29,16 +29,22 @@
 
   networking = {
     hostName = "kittycat";
-    networkmanager.enable = true;
-    wireless.enable = false;
+    networkmanager.enable = false;
+    wireless.enable = true;
     useDHCP = false;
-    interfaces.wlp10s0f3u3.useDHCP = true;
+    # interfaces.wlp10s0f3u3.useDHCP = true;
     #useNetworkd = true;
-    dhcpcd.extraConfig = ''
-      interface wlp10s0f3u3
-      static domain_name_servers=9.9.9.9
-    '';
+    # dhcpcd.extraConfig = ''
+    #   interface wlp10s0f3u3
+    #   static domain_name_servers=1.1.1.1
+    # '';
+    nameservers = [ "1.1.1.1" ];
   };
+
+  # environment.etc = {
+  #   "resolv.conf".text = "nameserver 1.1.1.1\n";
+  # };
+
   
   # networking.hostName = "kittycat"; # Define your hostname.
   # Pick only one of the below networking options.
