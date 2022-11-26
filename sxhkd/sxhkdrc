@@ -6,7 +6,7 @@
 
 ## Polybar scripts ##
 alt + t
-  time_date
+  /home/thefossenjoyer/dotfiles/polybar_scripts/time_date
 
 alt + c
   cpu_usage
@@ -42,9 +42,10 @@ super + p
 #dmenu_run -nb '#282c34' -sf '#dfdfdf' -sb '#3e4451' -nf '#89AAEB' -fn 'spleen32x64'
 # program launcher
 #dmenu_run -nb '#000000' -sf '#dfdfdf' -sb '#3e4451' -nf '#b6a0ff' -fn 'spleen32x64'
-
+#dmenu_run -nb '#282828' -sf '#dfdfdf' -sb '#3e4451' -nf '#ffffff' -fn "mononoki"
+# dmenu_run -nb '#282a36' -sf '#dfdfdf' -sb '#3e4451' -nf '#ffffff' -fn 'mononoki'
 super + d
-      dmenu_run -nb '#282828' -sf '#dfdfdf' -sb '#3e4451' -nf '#ffffff' -fn "mononoki"
+      dmenu_run -nb '#000000' -sf '#dfdfdf' -sb '#3e4451' -nf '#ffffff' -fn 'spleen32x64'
 
 
 # make sxhkd reload its configuration files:

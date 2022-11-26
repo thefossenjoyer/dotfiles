@@ -1,1 +1,1 @@
-notify-send -t 2500 "Time and date" "$(date | awk '{print $4 " "$5}')"
+notify-desktop -t 2500 "Time and date" "$(date | awk '{print $4 " "$5}')"

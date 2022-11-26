@@ -25,11 +25,26 @@
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.hostName = "kittycat"; # Define your hostname.
+  networking = {
+    hostName = "kittycat";
+    networkmanager.enable = true;
+    wireless.enable = false;
+    useDHCP = false;
+    interfaces.wlp10s0f3u3.useDHCP = true;
+    #useNetworkd = true;
+    dhcpcd.extraConfig = ''
+      interface wlp10s0f3u3
+      static domain_name_servers=9.9.9.9
+    '';
+  };
+  
+  # networking.hostName = "kittycat"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # networking.networkmanager.dns = "none;"
 
   # Set your time zone.
   time.timeZone = "Europe/Belgrade";
@@ -50,6 +65,11 @@
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+  hardware.opengl.setLdLibraryPath = true;
+  hardware.opengl.driSupport32Bit = true;
+
+  hardware.enableRedistributableFirmware = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -61,7 +81,14 @@
   
   services.xserver.windowManager = {
     bspwm.enable = true;
+    stumpwm.enable = true;
   };
+
+  # stop the system from autosleep
+  # systemd.targets.sleep.enable = false;
+  # systemd.targets.suspend.enable = false;
+  # systemd.targets.hibernate.enable = false;
+  # systemd.targets.hybrid-sleep.enable = false;
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -83,7 +110,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thefossenjoyer = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "netdev"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       thunderbird
@@ -122,7 +149,11 @@
      
      # theme
      lxappearance
+
+     libGL
   ];
+
+  programs.gnupg.agent.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

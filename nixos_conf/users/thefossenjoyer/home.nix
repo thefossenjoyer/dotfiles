@@ -5,18 +5,17 @@
   # paths it should manage.
   home.username = "thefossenjoyer";
   home.homeDirectory = "/home/thefossenjoyer";
-
-  # programs.moc = {
-  #   enable = true;
-  # };
-
+  
   # enable configuring fonts
   fonts.fontconfig.enable = true;
 
+  # allow proprietary software (mostly gaming software)
   nixpkgs.config.allowUnfree = true;
   
   home.packages = with pkgs; [
 
+    qbittorrent
+    
     moc # a terminal audio player
     emacs # the best text editor!
 
@@ -28,9 +27,15 @@
     # theming
     nitrogen
     lxappearance
+    feh
 
     gruvbox-dark-gtk
     gruvbox-dark-icons-gtk
+
+    dracula-theme
+    nordic
+    arc-theme
+    
     
     # fonts ; DON'T FORGET TO RUN fc-cache -fv
     iosevka
@@ -41,6 +46,11 @@
     jetbrains-mono
     # hack-font
     hasklig
+    meslo-lg
+    # fantasque-sans-mono
+    # borg-sans-mono
+    terminus_font_ttf
+    roboto-mono
 
     # sound
     pavucontrol
@@ -61,22 +71,32 @@
 
     # c/c++
     gcc
+    clang-tools
+    valgrind
+    czmq
+
+    cmake
+    gnumake
+
+    # libs
+    libtool
 
     # hs
     ghc
     # haskellPackages.ghcup - BROKEN!
     haskell-language-server
 
-    # clojure
-    clojure
-    leiningen
-    clojure-lsp
+    
 
     # gaming
     # wine
-    wineWowPackages.stable
+    # wineWowPackages.stable
+    winePackages.base
     lutris
     steam
+    steam-run
+    bottles
+    libGL
 
     mpv
 
@@ -84,14 +104,41 @@
     git
     git-crypt
     gnupg
+    pinentry
+
+    nix-index
 
     # notifs
     notify-desktop
     dunst
 
-    killall
+    killall # killall command
 
-    
+    pfetch # less bloated neofetch
+
+    # elixir
+    elixir
+    erlang
+    elixir_ls
+
+    # julia
+    julia-bin
+    julia-mono # a necessary font
+
+    jupyter
+
+    # go
+    go
+    gopls
+
+    starship
+
+    # window manager stuff
+    picom
+    # stumpwm
+    ranger
+    qutebrowser
+    nyxt
   ];
 
   # shell
@@ -114,9 +161,51 @@
     enable = true;
     interactiveShellInit = "
       set fish_greeting
+      # source ~/dotfiles/fish_conf/prompt_starship.fish
       source ~/dotfiles/fish_conf/prompt.fish
+      # source ~/dotfiles/fish_conf/custom_prompt.fish
       source ~/dotfiles/fish_conf/aliases.fish
+      source ~/dotfiles/fish_conf/env_vars.fish
       ";
+  };
+
+  programs.starship = {
+    enable = false;
+
+    settings = {
+      # add_newline = false;
+
+      character = {
+        success_symbol = "[λ](green)";
+        error_symbol = "[➜](bold red)";
+      };
+
+      # package.disabled = true;
+
+      username = {
+        style_user = "purple";
+        style_root = "red bold";
+        format = "[$user]($style) ";
+        disabled = false;
+        show_always = true;
+      };
+
+      hostname = {
+        ssh_only = false;
+        format = "on [$hostname](bold yellow) ";
+        trim_at = ".";
+        disabled = false;
+      };
+
+      directory = {
+        read_only = " ";
+        truncation_length = 10;
+        truncate_to_repo = true; # truncates directory to root folder if in github repo
+        style = "bold italic blue";
+      };
+      
+    };
+    
   };
 
   # programs.moc.enable = true;
@@ -129,7 +218,8 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "22.05";
-
+  # home.stateVersion = "20.09";
+  
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

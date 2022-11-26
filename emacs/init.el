@@ -1,24 +1,97 @@
 ;; setting up melpa ;;
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("cselpa" . "https://elpa.thecybershadow.net/packages/"))
+;; (add-to-list 'package-archives
+;;              '("cselpa" . "https://elpa.thecybershadow.net/packages/")
 (package-initialize)
 ;; end of melpa ;;
 
-;; (setq lsp-completion-provider :none)
-;; (defun corfu-lsp-setup ()
-;;   (setq-local completion-styles '(orderless)
-;;               completion-category-defaults nil))
-
 (use-package lsp-mode
-  :hook (c-mode . lsp))
-;; (add-hook 'lsp-mode-hook #'corfu-lsp-setup)
-(add-hook 'lsp-mode-hook 'company-mode)
-;; ;; (use-package c-mode
-;;   :after lsp-mode
-;;   :mode ("\.c$")
-;;   :hook (c-mode . lsp-deferred))
+  :ensure t
+  :hook ((haskell-mode . lsp-deferred) (elixir-mode . lsp-deferred) (go-mode . lsp-deferred))
+  :commands (lsp lsp-deferred)
+  :init
+  (add-to-list 'exec-path "/home/thefossenjoyer/elixir_projs/elixir-ls/release")
+  )
+
+(use-package lsp-haskell
+  :ensure t)
+
+;; JULIA ;;
+(use-package lsp-julia
+  :ensure t
+  :config
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.7"))
+
+(use-package julia-mode
+  :ensure t
+  :hook ((julia-mode . lsp-mode)))
+
+;; (use-package vterm
+;;     :ensure t)
+
+(use-package julia-repl
+  :ensure t
+  :hook (julia-mode . julia-repl-mode)
+
+  :init
+  (setenv "JULIA_NUM_THREADS" "8")
+
+  :config
+  ;; Set the terminal backend
+  (julia-repl-set-terminal-backend 'ansi-term)
+
+  (define-key julia-repl-mode-map (kbd "<C-RET>") 'my/julia-repl-send-cell)
+  (define-key julia-repl-mode-map (kbd "<M-RET>") 'julia-repl-send-line)
+  (define-key julia-repl-mode-map (kbd "<S-return>") 'julia-repl-send-buffer))
+
+
+;; (use-package julia-img-view
+;;   :load-path "~/.emacs/lisp/"
+;;   :after julia-repl
+;;   :config (julia-img-view-setup))
+
+;; (add-hook 'julia-mode-hook #'julia-img-view-minor-mode)
+
+;; nice symbols ;;
+(add-hook 'julia-mode-hook (lambda ()
+			     "Beautify"
+			     (push '("sqrt" . "√") prettify-symbols-alist)
+			     (push '("==" . "≍") prettify-symbols-alist)
+			     (push '("!=" . "≠") prettify-symbols-alist)
+			     (push '(">=" . "≥") prettify-symbols-alist)
+			     (push '("<=" . "≤") prettify-symbols-alist)
+			     (push '("->" . "→") prettify-symbols-alist)
+			     (push '("<-" . "←") prettify-symbols-alist)
+			     
+			     (push '("true" . "⊤") prettify-symbols-alist)
+			     (push '("false" . "⊥") prettify-symbols-alist)
+
+			     (push '("empty" . "∅") prettify-symbols-alist)
+			     (push '("for" . "∀") prettify-symbols-alist)
+			     (push '("in" . "∈") prettify-symbols-alist)
+			     (push '("=" . "∈") prettify-symbols-alist)
+			     
+			     (prettify-symbols-mode)
+			     ))
+  
+;; END ;;
+
+
+;; Ligature
+(ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
+                                     ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
+                                     "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
+                                     "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*" "/**"
+                                     "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
+                                     "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
+                                     "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
+                                     "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
+                                     "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
+                                     "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
+
+(global-ligature-mode 't)
+;; END ;;
 
 ;; make emacs look kinda better ;;
 (menu-bar-mode -1)
@@ -26,8 +99,23 @@
 (tool-bar-mode -1)
 
 ;; fonts ;; 
-;; (set-frame-font "Iosevka 14" nil t)
-(set-frame-font "Cascadia Code 14" nil t)
+;; (set-frame-font "Iosevka 16" nil t)
+;; (set-frame-font "JuliaMono 16" nil t)
+
+;; (set-frame-font "Terminus (TTF) 13" nil t)
+;; (set-frame-font "mononoki 14" nil t)
+;; (set-frame-font "DejaVu Sans Mono 14" nil t)
+;; (set-frame-font "Hack 14" nil t)
+
+(set-frame-font "Source Code Pro 16" nil t)
+;; (set-frame-font "Hasklig 16" nil t)
+;; (set-frame-font "Meslo LG M 16" nil t)
+
+;; (set-frame-font "Fantasque Sans Mono 16")
+
+;; (set-frame-font "Fira Code Medium 14" nil t)
+;; (set-frame-font "Cascadia Code 14" nil t)
+;; (set-frame-font "JetBrains Mono 14" nil t)
 ;; end of fonts ;;
 
 ;; line numbers ;;
@@ -58,12 +146,26 @@
 (setq modus-themes-paren-match '(bold intense underline))
 
 (setq modus-themes-syntax '(faint))
-(load-theme 'modus-vivendi t)
+;; (load-theme 'modus-vivendi t)
+;; (load-theme 'doom-gruvbox t)
+
+(load-theme 'doom-dracula t)
+;; (load-theme 'doom-nord t)
+
+;; (load-theme 'doom-vibrant t)
+
+;; (load-file "~/.emacs.d/lisp/jellybeans-plus-theme.el")
+;; (load-theme 'jellybeans-plus t)
+
+
 ;; (load-theme 'spaceway t)
 ;; (load-theme 'jbeans t)
 ;; (load-theme 'doom-badger t)
 ;; (load-theme 'doom-tomorrow-night t)
 ;; end of modus ;;
+
+(use-package autothemer
+  :ensure t)
 
 ;; end ;;
 
@@ -107,8 +209,8 @@
 
 ;; let's get evil! MUHAHAHHA!
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-(require 'term-keys)
-(term-keys-mode t)
+;; (require 'term-keys)
+;; (term-keys-mode t)
 ;; (require 'evil)
 ;; (require 'evil-leader)
 ;; (global-evil-leader-mode)
@@ -118,10 +220,13 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/spaceway")
 
 ;; autopair ;;
-(require 'smartparens-config)
-(require 'rainbow-delimiters)
+;; (require 'smartparens-config)
+;; (require 'rainbow-delimiters)
 
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;; (setq rainbow-delimiters-depth-3-face "#fbd6f4")
+
+
+;; (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 ;; (rainbow-delimiters-mode)
 ;; (smartparens-global-mode)
 (electric-pair-mode 1)
@@ -178,6 +283,7 @@
 (setq corfu-preselect-first nil)
 
 (global-corfu-mode)
+;; (global-company-mode -1)
 ;; END ;;
 
 ;; Adding custom.el so it doesn't overflow my init.el
@@ -185,30 +291,11 @@
 (load custom-file)
 ;; end ;;
 
-
-;; (use-package time
-;;   :defer 10
-;;   :config
-;;   (defface my/display-time
-;;     '((((type x w32 mac))
-;;        ;; #060525 is the background colour of my default face.
-;;        (:foreground "#060525" :inherit bold))
-;;       (((type tty))
-;;        (:foreground "blue")))
-;;     "Face used to display the time in the mode line.")
-;;   (setq display-time-string-forms
-;;         '((propertize (concat " " 12-hours ":" minutes " " am-pm " ")
-;;                       'face 'my/display-time)))
-;;   (set-face-attribute 'my/display-time nil :foreground "#fff" :background "#333"
-;;                       :box '(:line-width 1 :color "#323"))
-;;   (display-time-mode t))
-
-;; MODELINE ;;
-
 ;; TIME IN MODELINE ;;
 ;; (setq display-time-format "%a, %b, %H:%M  ")
-(setq display-time-string-forms '((propertize (format " %s, %s%s %s:%s   " dayname monthname day 24-hours minutes)
-					      'face '(:background "#323232"))))
+(setq display-time-string-forms '((propertize (format " %s, %s%s %s:%s     " dayname monthname day 24-hours minutes)
+					      ;; 'face '(:background "#323232")
+					      )))
 
 ;; (setq display-time-string-forms (concat " " 24-hours ":" minutes " ") 'face '(:background "#060525"))
  ;; (setq display-time-string-forms
@@ -225,14 +312,6 @@
 
 (setq-default mode-line-format
           (list
-           ;; name of major mode
-           ;; " %m: "
-           ;; buffer name
-           ;; " buffer -> %b "
-           ;; " %b "
-
-           ;; buffer status
-           ;; " buffer status -> "
            '((:eval
               (cond
                ((buffer-modified-p) (propertize " ◉" 'face '(:foreground "#e0e6f0")))
@@ -243,13 +322,18 @@
 
            '(:eval
              (list
-              (propertize " %b" 'face '(:foreground "light grey" :weight bold) ':help-echo (buffer-file-name))))
+              (propertize " %b " 'face '(:foreground "light grey" :weight bold) ':help-echo (buffer-file-name))))
            ;; mode-line-buffer-identification
 
            ;; line number
            ;; " line -> %l "
-           " l: %l "
+           ;; " l: %l "
+           '(:eval
+             (list
+              (propertize " l: %l " 'face '(:foreground "light grey" :weight bold) ':help-echo (buffer-file-name))))
 
+
+	   
 	   '(:eval
                  (propertize " " 'display
 	                     `((space :align-to
@@ -266,9 +350,9 @@
 
 ;; (setq-default mode-line-misc-info '("test"))
 
-(set-face-background 'mode-line "#000000") ;; bg
-(set-face-attribute 'mode-line nil
-                    :box '(:color "#000000")) ;; set the modeline's border colour to the bg colour
+;; (set-face-background 'mode-line "#000000") ;; bg
+;; (set-face-attribute 'mode-line nil
+;;                     :box '(:color "#000000")) ;; set the modeline's border colour to the bg colour
 
 ;; (set-face-background 'mode-line "#171717")
 ;; (set-face-attribute 'mode-line nil
@@ -289,12 +373,13 @@
 ;; ;; END OF DOOM-MODELINE ;;
 
 (set-face-attribute 'mode-line nil  :height 120)
-;; (set-face-attribute 'mode-line nil :font "Iosevka-15")
-(set-face-attribute 'mode-line nil :font "Cascadia Code-15")
+(set-face-attribute 'mode-line nil :font "Iosevka-15")
+;; (set-face-attribute 'mode-line nil :font "Fira Code-15")
+;; (set-face-attribute 'mode-line nil :font "Cascadia Code-15")
 ;; END OF MODELINE ;;
 
 ;; CURSOR COLOR ;;
-(set-cursor-color "#BF93C3")
+;; (set-cursor-color "#BF93C3")
 ;; END ;;
 
 ;; revert files ;;
@@ -305,24 +390,9 @@
 (which-key-mode)
 ;; END ;;
 
-;; LSP ;;
-;; (add-hook 'c-mode 'lsp)
-;; (add-hook 'emacs-lisp-mode-hook #'lsp)
-;; END OF LSP ;;
-
-;; POPPER ;;
-(require 'popper)
 (require 'term-toggle)
 
-;; (setq popper-reference-buffers
-;;       (append popper-reference-buffers
-;; 	      '("^\\*vterm.*\\*$"  vterm-mode)))
 
-;; (global-set-key (kbd "C-SPC p t") 'popper-toggle-latest)
-;; (global-set-key (kbd "C-SPC p c") 'popper-cycle)
-;; ;; (global-set-key (kbd "C-SPC p t t") 'popper-toggle-type)
-
-;; (popper-mode +1)
 
 (global-set-key (kbd "C-SPC p t") 'term-toggle-ansi)
 
@@ -332,13 +402,24 @@
 (setq geiser-active-implementations '(guile))
 ;; END OF GUILE ;;
 
-;; CENTAUR TABS ;;
-;; (require 'centaur-tabs)
-;; (global-set-key (kbd "C-<left>")  'centaur-tabs-backward)
-;; (global-set-key (kbd "C-<right>") 'centaur-tabs-forward)
 
-;; (centaur-tabs-headline-match)
+;; backup files
+(setq backup-directory-alist `(("." . "~/.saves")))
 
-;; (setq centaur-tabs-style "alternate")
-;; ;; (centaur-tabs-mode t)
-;; END OF TABS ;;
+;; ORG ;;
+(transient-mark-mode 1)
+
+(use-package org-bullets
+  :ensure t
+  :hook (org-mode . (lambda () (org-bullets-mode 1))))
+
+(require 'org)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;; END ;;
+
+;; GO ;;
+(use-package go-mode
+  :ensure t)
+
+(add-hook 'go-mode-hook (lambda () (setq tab-width 4)))
+;; END ;;

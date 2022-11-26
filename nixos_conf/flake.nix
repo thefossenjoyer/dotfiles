@@ -10,19 +10,38 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
   
-  outputs = { nixpkgs, home-manager, ... }: {
-    let
-      system = "x86_64-linux";
+  outputs = { self, nixpkgs, home-manager, ... }: 
+  let
+    system = "x86_64-linux";
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config = { allowUnfree = true; };
-      };
+    pkgs = import nixpkgs {
+      inherit system;
+       config = { allowUnfree = true; };
+    };
 
-      lib = nixpkgs.lib;
+    lib = nixpkgs.lib;
       
-    in {
-      nixosConfiguration = {
+  in {
+    # Configuring home-manager
+    homeManagerConfigurations = {
+      thefossenjoyer = home-manager.lib.homeManagerConfiguration {
+        inherit system pkgs;
+        username = "thefossenjoyer";
+        homeDirectory = "/home/thefossenjoyer";
+        stateVersion = "22.05";
+        configuration = {
+          # home.stateVersion = "20.09";
+          imports = [
+            ./users/thefossenjoyer/home.nix
+          ];
+        };
+      };
+    };
+    # end of homeManagerConfigurations
+
+    # Configuring NixOS
+    nixosConfigurations = {
+      default = self.nixosConfigurations.kittycat;
         kittycat = lib.nixosSystem {
           inherit system;
 
@@ -31,7 +50,9 @@
           ];
         };
         
-      };
+    };
+    # end of NixOS
     
   };
 }
+# flake.nix ends here
