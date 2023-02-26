@@ -1,0 +1,27 @@
+{
+  "suggest.noselect": false,
+  "suggest.enablePreselect": false,
+  "languageserver": {
+
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    },
+    
+    "rust": {
+        "command": "~/.cargo/bin/rust-analyzer",
+        "filetypes": ["rust"],
+        "rootPatterns": ["Cargo.toml"]
+      },
+
+      "clangd": {
+        "command": "clangd15",
+        "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+        "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+      },
+
+  }
+
+}

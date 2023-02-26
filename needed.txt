@@ -1,0 +1,10 @@
+dmenu
+nitrogen
+alacritty
+bspwm
+polybar
+sxhkd
+emacs + doom
+picom
+flameshot
+

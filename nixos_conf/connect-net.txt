@@ -1,0 +1,9 @@
+nix-shell -p dhcp dhcpcd
+
+# INTERFACE - wlp10s0f3u3
+sudo ifconfig wlp10s0f3u3 down
+-||- up
+
+# BE SURE TO KILL ALL RUNNING PROCESSES OF WPA
+sudo wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant.conf -iwlp10s0f3u3 -Dwext # NO SPACES!!!!!
+sudo dhcpcd

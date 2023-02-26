@@ -1,0 +1,64 @@
+#! /bin/sh
+
+### AUTOSTART ###
+
+# program koji kontrolise keybindove
+sxhkd &
+
+# wallpaper
+# nitrogen --restore &
+# cd Downloads && feh --bg-scale pixel_stripes_resizedf.png &
+cd wallpapers && feh --bg-scale 0282.jpg &
+
+# bar
+# polybar meinbar &
+
+# r/unixporn transparentnost
+# picom -b --animations --animation-window-mass 0.5 --animation-for-open-window zoom --animation-stiffness 350 &
+picom &
+
+# pokrecem daemon da bih mogao da koristim "emacsclient"
+emacs --daemon &
+
+# notifikacije
+dunst &
+
+# promeni izmedju engleski i srpske(cirilce) tastature
+setxkbmap -layout us,rs -option "grp:alt_shift_toggle,grp_led:scroll" &
+
+# izgled kursora
+#xsetroot -cursor_name qogir-dark &
+xsetroot -cursor_name left_ptr
+
+# ovo ne znam ni ja sta je 
+pgrep -x sxhkd > /dev/null || sxhkd &
+### END ###
+
+### WORKSPACES ###
+bspc monitor -d I II III IV V VI VII VIII IX X
+### END ###
+
+### BORDER ###
+bspc config border_width         2
+bspc config window_gap          12
+bspc config border_radius       20
+
+## BORDER COLOUR ##
+# bspc config focused_border_color "#525252"
+bspc config focused_border_color "#8baff1"
+# bspc config normal_border_color "#000000"
+
+# Rosé pine 
+# bspc config focused_border_color "#9ccfd8"
+# bspc config normal_border_color "#6e6a86"
+### END ###
+
+### WINDOW RULES ###
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+# bspc rule -a dunst state=floating border=off
+bspc config -d Dunst window_border 0
+### END ###

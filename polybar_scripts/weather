@@ -1,0 +1,1 @@
+notify-send -t 4500 "$(curl -s 'wttr.in/{Plana, Serbia}?format=3')"

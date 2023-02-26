@@ -1,0 +1,55 @@
+import:
+  - ~/dotfiles/alacritty/font.yml
+
+  # themes
+  
+  # - ~/dotfiles/alacritty/rose-pine.yml
+  - ~/dotfiles/alacritty/catppuccin-mocha.yml
+  # - ~/dotfiles/alacritty/jellybeans.yml
+  # - ~/dotfiles/alacritty/spaceway.yml
+  # - ~/dotfiles/alacritty/jellybeans-repo.yml
+  # - ~/dotfiles/alacritty/nightfox.yml
+  # - ~/dotfiles/alacritty/oxocarbon.yml
+  # - ~/dotfiles/alacritty/paradise.yml
+  # - ~/dotfiles/alacritty/dc-dark-leaf.yml
+  # - ~/dotfiles/alacritty/nirvana.yml
+  # - ~/dotfiles/alacritty/erebus.yml
+  # - ~/dotfiles/alacritty/monotheme.yml
+  # - ~/dotfiles/alacritty/modus-vivendi.yml
+  # - ~/dotfiles/alacritty/whale.yml
+  # - ~/dotfiles/alacritty/dark-lua.yml
+  # - ~/dotfiles/alacritty/mountain.yml
+  # - ~/dotfiles/alacritty/gruvbox-dark.yml
+  # - ~/dotfiles/alacritty/gruvbox-other-dark.yml
+  # - ~/dotfiles/alacritty/one-dark.yml
+  # - ~/dotfiles/alacritty/dt-one-dark.yml
+  # - ~/dotfiles/alacritty/tomorrow-night-bright.yml
+  # - ~/dotfiles/alacritty/tokyo-night.yml
+  # - ~/dotfiles/alacritty/base16-tomorrow-night.yml
+  # - ~/dotfiles/alacritty/everforest-dark.yml
+  # - ~/dotfiles/alacritty/decayce.yml
+  # - ~/dotfiles/alacritty/dark-decay.yml
+  # - ~/dotfiles/alacritty/everblush.yml
+  # - ~/dotfiles/alacritty/kanagawa.yml
+  # - ~/dotfiles/alacritty/dark-plus.yml
+  # - ~/dotfiles/alacritty/monokai-classic.yml
+  # - ~/dotfiles/alacritty/monokai-dark.yml
+  # - ~/dotfiles/alacritty/material-ocean.yml
+  # - ~/dotfiles/alacritty/deep-ocean.yml
+  
+offset:
+  x: 0
+  y: 1
+
+# window settings
+window:
+  padding:
+    x: 30 
+    y: 30
+
+  opacity: 1.0 
+
+  title: Alacritty
+
+  scrolling:
+    history: 5000

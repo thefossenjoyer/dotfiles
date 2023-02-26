@@ -1,0 +1,20 @@
+# Font settings
+
+font:
+  normal:
+    family: undefined
+    style: Regular
+
+  italic:
+    family: undefined
+    style: Italic
+
+  bold:
+    family: undefined
+    style: Bold
+
+  bold_italic:
+    family: undefined
+    style: Bold Italic
+
+  size: 15.0

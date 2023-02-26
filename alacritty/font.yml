@@ -1,0 +1,58 @@
+font:
+  normal:
+    # family: undefined
+    # family: ShureTechMono Nerd Font Mono
+    # family: xos4 Terminus
+    # family: Liga SFMono Nerd Font
+    # family: JetBrains Mono
+    # family: Ubuntu Mono Nerd Font
+    # family: CozetteVector
+    family: VictorMono Nerd Font
+    # family: Space Mono
+    # family: DinaRemasterII
+    family: Iosevka Nerd Font
+    style: Regular
+
+  italic:
+    # family: undefined
+    # family: ShureTechMono Nerd Font Mono
+    # family: xos4 Terminus
+    # family: Liga SFMono Nerd Font
+    # family: JetBrains Mono
+    # family: Ubuntu Mono Nerd Font
+    # family: CozetteVector
+    # family: Space Mono
+    # family: DinaRemasterII
+    # family: VictorMono Nerd Font
+    family: Iosevka Nerd Font
+    style: Italic
+
+  bold:
+    # family: undefined
+    # family: ShureTechMono Nerd Font Mono
+    # family: xos4 Terminus
+    # family: Liga SFMono Nerd Font
+    # family: JetBrains Mono
+    # family: Ubuntu Mono Nerd Font
+    # family: CozetteVector
+    # family: Space Mono
+    # family: DinaRemasterII
+    # family: VictorMono Nerd Font
+    family: Iosevka Nerd Font
+    style: Bold
+
+  bold_italic:
+    # family: undefined
+    # family: ShureTechMono Nerd Font Mono
+    # family: xos4 Terminus
+    # family: Liga SFMono Nerd Font
+    # family: JetBrains Mono
+    # family: Ubuntu Mono Nerd Font
+    # family: CozetteVector
+    # family: Space Mono
+    # family: DinaRemasterII
+    # family: VictorMono Nerd Font
+    family: Iosevka Nerd Font
+    style: Bold Italic
+
+  size: 15
